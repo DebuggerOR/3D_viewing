@@ -3,7 +3,6 @@ package Main;
 import java.awt.*;
 import java.awt.event.*;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.*;
 
 public class Main {
     public static Frame myFrame;
@@ -18,8 +17,8 @@ public class Main {
         myFrame.setVisible(true);
         myCanvas.requestFocus();
 
-        myFrame.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent windowEvent){
+        myFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent windowEvent) {
                 System.exit(0);
             }
         });

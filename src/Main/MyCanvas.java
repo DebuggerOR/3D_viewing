@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
+
 public class MyCanvas extends Canvas implements MouseListener, MouseMotionListener, KeyListener {
     public static final long serialVersionUID = 1L;
 
@@ -63,12 +64,13 @@ public class MyCanvas extends Canvas implements MouseListener, MouseMotionListen
     // viw scn didn't change
     boolean isSameViwScn;
 
-    public void load(){
+    public void load() {
         try {
-            if(!this.isSameViwScn) {
+            if (!this.isSameViwScn) {
                 // load new scn and viw
                 this.view.loadViw(this.viwName);
                 this.scene.loadScn(this.scnName);
+                this.isSameViwScn = true;
             }
 
             // size
@@ -242,7 +244,6 @@ public class MyCanvas extends Canvas implements MouseListener, MouseMotionListen
             // r for restart
             case 'r': {
                 this.status = "restart pressed";
-                this.isSameViwScn = false;
                 this.load();
                 break;
             }
@@ -252,6 +253,7 @@ public class MyCanvas extends Canvas implements MouseListener, MouseMotionListen
                     FileDialog fd = new FileDialog(Main.myFrame, "choose scene or view");
                     fd.setVisible(true);
                     String f = fd.getFile();
+                    this.isSameViwScn = false;
                     if (f.endsWith(".scn")) {
                         this.scnName = f;
                     } else if (f.endsWith(".viw")) {
